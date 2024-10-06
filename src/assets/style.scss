@@ -1,0 +1,26 @@
+@import 'normalize.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: none;
+  border: none;
+}
