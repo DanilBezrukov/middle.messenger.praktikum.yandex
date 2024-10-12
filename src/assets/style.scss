@@ -1,22 +1,43 @@
 @import 'normalize.css';
+@import "auth-pages";
+@import "default-btn";
+@import "link";
+@import "error-pages";
+@import "chat-list-page";
+@import "user-settings";
+:root {
+  --blue: rgb(51, 105, 243);
+}
 
 *, *::before, *::after {
+  font-family: Inter;
+  color: rgb(30, 30, 30);
+  font-size: 13px;
   box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100vw;
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: normal;
 }
-p {
+
+p, ul {
   margin: 0;
   padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 input, textarea, select, button {
   font-family: inherit;
   font-size: inherit;
   margin: 0;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 0;
+  border: none;
   box-shadow: none;
 }
 

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{> head-default }}
+        <title>User settings</title>
+    </head>
+    <body>
+        <main class="user-settings-page">
+
+            {{> go-back href="../chat-list/chat-list.html"}}
+
+            <div class="wrapper">
+
+                <div class="header">
+                    <label class="upload-photo">
+                        <input type="file" accept="image/*">
+                    </label>
+                    <span class="header-name">Иван</span>
+                </div>
+
+
+                <ul class="list">
+                    {{#each userSetting.publicData}}
+                    <li class="list-item">
+                        <span>{{this.placeholder}}</span>
+                        <span class="test-class">{{this.value}}</span>
+                    </li>
+                    {{/each}}
+                </ul>
+
+                <ul class="list">
+                    {{#each userSetting.links}}
+                    <li class="list-item">
+                        {{> link href=this.href title=this.title color=this.color }}
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </main>
+    </body>
+</html>
