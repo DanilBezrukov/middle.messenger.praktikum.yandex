@@ -8,7 +8,7 @@
         <main class="user-settings-page">
             {{> go-back href="/src/pages/user-settings/user-settings.html"}}
 
-            <div class="wrapper">
+            <form class="wrapper">
                 <div class="header">
                     <label class="upload-photo upload-photo_disabled">
                         <input disabled type="file" accept="image/*">
@@ -16,16 +16,16 @@
                 </div>
 
 
-                <ul class="list">
+                <div class="list">
                     {{#each userSetting.publicData}}
                         {{> field value=this.value type=this.type name=this.name placeholder=this.placeholder}}
                     {{/each}}
-                </ul>
+                </div>
 
                 <div class="btn-wrapper">
-                    {{> button type="button" title="Сохранить"}}
+                    {{> button type="submit" title="Сохранить"}}
                 </div>
-            </div>
+            </form>
         </main>
     </body>
 </html>
