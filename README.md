@@ -39,6 +39,8 @@
 
 Проект развернутый на Netlify: [https://practicum.tech-view.ru/](https://practicum.tech-view.ru/)
 
+Технический домен для проверки с помощью автотестов: [https://remarkable-chaja-f544cc.netlify.app/](https://remarkable-chaja-f544cc.netlify.app/)
+
 ## Скрипты
 
 В проекте доступны следующие команды:
