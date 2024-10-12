@@ -1,0 +1,36 @@
+.chat-list-page {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr) ;
+  grid-template-areas:
+    "header messages"
+    "chats messages";
+  width: 100%;
+  height: 100%;
+
+  .chat-header {
+    height: 100px;
+    grid-area: header;
+  }
+
+  .chats {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgb(251, 251, 251);
+    margin-left: 0;
+    padding: 0 10px;
+    overflow: auto;
+    grid-area: chats;
+  }
+
+  .chat {
+    min-height: 70px;
+    background: rgb(234, 234, 234);
+    list-style-type: none;
+  }
+
+  .message-feed {
+    background: rgb(229, 229, 229);
+    grid-area: messages;
+  }
+}
