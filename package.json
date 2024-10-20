@@ -1,0 +1,25 @@
+{
+    "name": "messenger",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "start": "tsc && vite build && vite preview --port 3000",
+        "build": "tsc && vite build"
+    },
+    "devDependencies": {
+        "@types/node": "^22.7.4",
+        "prettier": "3.3.3",
+        "sass-embedded": "^1.79.4",
+        "typescript": "^5.5.3",
+        "vite": "^5.4.8",
+        "vite-plugin-handlebars": "^2.0.0"
+    },
+    "dependencies": {
+        "normalize.css": "^8.0.1"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    }
+}
