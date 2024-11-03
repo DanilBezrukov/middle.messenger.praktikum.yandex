@@ -1,23 +1,27 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
+        "target": "esnext",
         "useDefineForClassFields": true,
-        "module": "ESNext",
-        "lib": ["ES2020", "DOM", "DOM.Iterable"],
-        "skipLibCheck": true,
-
-        /* Bundler mode */
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
-        "isolatedModules": true,
-        "moduleDetection": "force",
-        "noEmit": true,
-
-        /* Linting */
+        "module": "esnext",
+        "lib": ["ESNext", "DOM"],
+        "moduleResolution": "Node",
         "strict": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "noEmit": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noImplicitReturns": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "baseUrl": ".",
+        "paths": {
+            "core": ["src/core/core"],
+            "components": ["src/components/components"]
+        }
     },
-    "include": ["src"]
+    "include": ["src", "node_modules/handlebars/types/index.d.ts"]
 }

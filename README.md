@@ -6,30 +6,32 @@
 
 ## Содержание
 
-- [Ключевые технологии](#ключевые-технологии)
-- [Ссылки на страницы](#ссылки-на-страницы)
-- [Макет в Figma](#макет-в-figma)
-- [Деплой](#деплой)
-- [Скрипты](#скрипты)
-- [Установка](#установка)
-- [Структура проекта](#структура-проекта)
+-   [Ключевые технологии](#ключевые-технологии)
+-   [Ссылки на страницы](#ссылки-на-страницы)
+-   [Макет в Figma](#макет-в-figma)
+-   [Деплой](#деплой)
+-   [Скрипты](#скрипты)
+-   [Установка](#установка)
+-   [Структура проекта](#структура-проекта)
 
 ## Ключевые технологии
 
-- **Vite** — инструмент сборки.
-- **TypeScript** — язык программирования.
-- **Sass** — препроцессор CSS.
-- **Handlebars** — шаблонизатор.
+-   **Vite** — инструмент сборки.
+-   **TypeScript** — язык программирования.
+-   **Sass** — препроцессор CSS.
+-   **Handlebars** — шаблонизатор.
+-   **Stylelint** — инструмент для линтинга стилей.
+-   **Eslint** — инструмент статического анализа кода.
 
 ## Ссылки на страницы
 
-- [Навигация по страницам](https://practicum.tech-view.ru/)
-- [Авторизация](https://practicum.tech-view.ru/src/pages/authorization/authorization.html)
-- [Регистрация](https://practicum.tech-view.ru/src/pages/registration/registration.html)
-- [Список чатов и лента переписки](https://practicum.tech-view.ru/src/pages/chat-list/chat-list.html)
-- [Страница настроек профиля](https://practicum.tech-view.ru/src/pages/user-settings/user-settings.html)
-- [Страница 404](https://practicum.tech-view.ru/src/pages/not-found/not-found.html)
-- [Страница 500](https://practicum.tech-view.ru/src/pages/server-error/server-error.html)
+-   [Навигация по страницам](https://practicum.tech-view.ru/)
+-   [Авторизация](https://practicum.tech-view.ru/src/pages/authorization/index.html)
+-   [Регистрация](https://practicum.tech-view.ru/src/pages/registration/index.html)
+-   [Список чатов и лента переписки](https://practicum.tech-view.ru/src/pages/chat-list/index.html)
+-   [Страница настроек профиля](https://practicum.tech-view.ru/src/pages/user-settings/index.html)
+-   [Страница 404](https://practicum.tech-view.ru/src/pages/not-found/index.html)
+-   [Страница 500](https://practicum.tech-view.ru/src/pages/server-error/index.html)
 
 ## Макет в Figma
 
@@ -45,32 +47,25 @@
 
 В проекте доступны следующие команды:
 
-- **npm run dev** — запуск проекта в режиме разработки.
-- **npm run build** — компиляция TypeScript и сборка проекта для продакшн.
-- **npm run start** — компиляция TypeScript, сборка проекта и запуск на порту 3000.
+-   **npm run dev** — запуск проекта в режиме разработки.
+-   **npm run check** — запуск линтеров и проверка типизации.
+-   **npm run build** — компиляция TypeScript и сборка проекта для продакшн.
+-   **npm run start** — компиляция TypeScript, сборка проекта и запуск на порту 3000.
 
 ## Установка
 
-   ```bash
-   git clone https://github.com/DanilBezrukov/middle.messenger.praktikum.yandex.git
-   ```
+```bash
+git clone https://github.com/DanilBezrukov/middle.messenger.praktikum.yandex.git
+```
 
-   ```bash
-   cd middle.messenger.praktikum.yandex
-   ```
+```bash
+cd middle.messenger.praktikum.yandex
+```
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-   ```bash
-   npm run dev
-   ```
-
-## Структура проекта
-
-- `/static` — статичные файлы.
-- `/src` — исходные файлы проекта.
-   - `/assets` — стили.
-   - `/pages` — HTML-страницы.
-   - `/partials` — частичные шаблоны.
+```bash
+npm run dev
+```

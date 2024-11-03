@@ -1,0 +1,26 @@
+.go-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(251 251 251);
+    text-decoration: none;
+    height: 100%;
+    width: 64px;
+    z-index: 1;
+}
+
+.go-back-arrow {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    transform: rotate(90deg);
+    font-size: 22px;
+}

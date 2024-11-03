@@ -4,20 +4,36 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "start": "tsc && vite build && vite preview --port 3000",
+        "check": "tsc --noEmit && stylelint \"**/*.scss\" && eslint . --ext .ts",
+        "dev": "npm run check && vite",
+        "start": "npm run check && tsc && vite build && vite preview --port 3000",
         "build": "tsc && vite build"
     },
     "devDependencies": {
         "@types/node": "^22.7.4",
+        "@types/uuid": "^10.0.0",
+        "@typescript-eslint/eslint-plugin": "^8.10.0",
+        "@typescript-eslint/parser": "^8.10.0",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-promise": "^6.6.0",
         "prettier": "3.3.3",
-        "sass-embedded": "^1.79.4",
+        "sass-embedded": "^1.80.3",
+        "stylelint": "^16.10.0",
+        "stylelint-config-standard": "^36.0.1",
+        "stylelint-scss": "^6.8.1",
         "typescript": "^5.5.3",
         "vite": "^5.4.8",
         "vite-plugin-handlebars": "^2.0.0"
     },
     "dependencies": {
-        "normalize.css": "^8.0.1"
+        "handlebars": "^4.7.8",
+        "normalize.css": "^8.0.1",
+        "uuid": "^10.0.0"
     },
     "engines": {
         "node": ">=16.0.0"

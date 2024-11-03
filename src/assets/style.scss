@@ -1,47 +1,61 @@
-@import 'normalize.css';
-@import "auth-pages";
-@import "default-btn";
-@import "link";
-@import "error-pages";
-@import "chat-list-page";
-@import "user-settings";
+@import url('normalize.css');
+
 :root {
-  --blue: rgb(51, 105, 243);
+    --blue: rgb(51 105 243);
+    --border-color: rgb(234 234 234);
 }
 
-*, *::before, *::after {
-  font-family: Inter;
-  color: rgb(30, 30, 30);
-  font-size: 13px;
-  box-sizing: border-box;
-}
-body {
-  height: 100vh;
-  width: 100vw;
-}
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: normal;
+*,
+*::before,
+*::after {
+    font-family: Inter, sans-serif;
+    color: rgb(30 30 30);
+    font-size: 13px;
+    box-sizing: border-box;
 }
 
-p, ul {
-  margin: 0;
-  padding: 0;
+body,
+#app {
+    height: 100vh;
+    width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+p,
+ul {
+    margin: 0;
+    padding: 0;
 }
 
 li {
-  list-style-type: none;
-}
-input, textarea, select, button {
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0;
-  padding: 0;
-  border: none;
-  box-shadow: none;
+    list-style-type: none;
 }
 
-input:focus, textarea:focus, select:focus, button:focus {
-  outline: none;
-  border: none;
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline: none;
+    border: none;
 }
