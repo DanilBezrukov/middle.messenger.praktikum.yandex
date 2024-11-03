@@ -40,18 +40,6 @@ export class AuthForm extends Block {
                     if (values) {
                         console.log(values);
                     }
-                    // const values = {};
-                    //
-                    // if (!Array.isArray(fields)) return;
-                    //
-                    // const isValid = fields.reduce((acc: boolean, field: Field) => {
-                    //     Object.assign(values, field.value);
-                    //     return !field.getValidation() ? false : acc;
-                    // }, true);
-                    //
-                    // if (isValid) {
-                    //     console.log(values);
-                    // }
                 },
             },
         });
