@@ -1,28 +1,20 @@
 import { resolve } from 'path';
 import { defineConfig, UserConfig } from 'vite';
-import handlebars from 'vite-plugin-handlebars';
-import { authorizationContext } from './src/pages/authorization/authorization.context';
-import { registrationContext } from './src/pages/registration/registration.context';
-import { userSettingContext } from './src/pages/user-settings/user-setting.context';
+import * as path from 'node:path';
+import { handlebarsPrecompile } from './vite-plugins/handlebars-precompile';
 
-const pathToPages = `${__dirname}/src/pages`;
+const pathToPages = path.join(__dirname, 'src/pages');
 
 const pages = {
     index: resolve(__dirname, 'index.html'),
-    authorization: resolve(pathToPages, 'authorization/authorization.html'),
-    registration: resolve(pathToPages, 'registration/registration.html'),
-    chatList: resolve(pathToPages, 'chat-list/chat-list.html'),
-    userSetting: resolve(pathToPages, 'user-settings/user-settings.html'),
-    changePassword: resolve(pathToPages, 'user-settings/change-password-page.html'),
-    changePersonalData: resolve(pathToPages, 'user-settings/change-personal-data-page.html'),
-    notFound: resolve(pathToPages, 'not-found/not-found.html'),
-    serverError: resolve(pathToPages, 'server-error/server-error.html'),
-};
-
-const contextHandlebars = {
-    authorization: authorizationContext,
-    registration: registrationContext,
-    userSetting: userSettingContext,
+    authorization: resolve(pathToPages, 'authorization/index.html'),
+    registration: resolve(pathToPages, 'registration/index.html'),
+    chatList: resolve(pathToPages, 'chat-list/index.html'),
+    userSetting: resolve(pathToPages, 'user-settings/index.html'),
+    changePassword: resolve(pathToPages, 'user-settings-password/index.html'),
+    changePersonalData: resolve(pathToPages, 'user-settings-personal-data/index.html'),
+    notFound: resolve(pathToPages, 'not-found/index.html'),
+    serverError: resolve(pathToPages, 'server-error/index.html'),
 };
 
 const config: UserConfig = {
@@ -37,11 +29,25 @@ const config: UserConfig = {
         port: 3000,
         open: true,
     },
-    plugins: [
-        handlebars({
-            partialDirectory: resolve(__dirname, 'src/partials'),
-            context: contextHandlebars,
-        }),
-    ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                api: 'modern',
+            },
+        },
+    },
+    plugins: [handlebarsPrecompile()],
+    resolve: {
+        alias: [
+            {
+                find: 'core',
+                replacement: path.resolve(__dirname, 'src/core/core'),
+            },
+            {
+                find: 'components',
+                replacement: path.resolve(__dirname, 'src/components/components'),
+            },
+        ],
+    },
 };
 export default defineConfig(config);

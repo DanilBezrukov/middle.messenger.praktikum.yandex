@@ -1,0 +1,7 @@
+.chats {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+  overflow: auto;
+  grid-area: chats;
+}

@@ -1,0 +1,12 @@
+.link {
+    width: fit-content;
+    text-align: center;
+    text-decoration: none;
+    color: var(--blue);
+    border-bottom: 1px solid transparent;
+    transition: border-color 150ms;
+
+    &:hover {
+        border-color: currentcolor;
+    }
+}
