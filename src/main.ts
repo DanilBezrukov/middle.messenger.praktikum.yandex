@@ -8,6 +8,7 @@ import { PageServerError } from './pages/server-error/server-error';
 import { PageSettingsPassword } from './pages/user-settings-password/user-settings-password';
 import { PageSettingsPersonalData } from './pages/user-settings-personal-data/user-settings-personal-data';
 import { AuthController } from './controllers/AuthController';
+
 /*
  * DanilB
  * test@practicumyandex.ru

@@ -21,7 +21,7 @@ class AvatarEditComponent extends Block {
             url = 'https://ya-praktikum.tech/api/v2/resources' + user.avatar;
             objectFit = 'cover';
         } else {
-            url = '/static/empty-photo.svg';
+            url = './static/empty-photo.svg';
         }
         super(avatarEdit, {
             ...props,

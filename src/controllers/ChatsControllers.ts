@@ -53,15 +53,15 @@ export class ChatsControllers {
 
         const [chats, users] = response.map(item => item || []);
 
-        avatarReplacement(chats, '/static/chat.svg');
-        avatarReplacement(users, '/static/user.svg');
+        avatarReplacement(chats, './static/chat.svg');
+        avatarReplacement(users, './static/user.svg');
 
         store.set('foundChats', { chats, users });
     }
 
     static async getChats() {
         const chats = (await ChatsAPI.getChats()) || [];
-        avatarReplacement(chats, '/static/chat.svg');
+        avatarReplacement(chats, './static/chat.svg');
         store.set('chats', chats);
     }
 
@@ -82,7 +82,7 @@ export class ChatsControllers {
         const currentUser = store.getState('user')!;
 
         const interlocutor = users.find(user => user.id !== currentUser.id)!;
-        avatarReplacement(interlocutor, '/static/user.svg');
+        avatarReplacement(interlocutor, './static/user.svg');
         const data = {
             ...currentChat,
             interlocutor,
