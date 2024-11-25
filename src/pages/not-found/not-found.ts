@@ -1,9 +1,10 @@
 import { ErrorInfo } from 'components';
-import { render } from 'core';
+import { DefaultPage } from 'core';
+import { TPropsErrorInfo } from '../../components/error-info/error-info';
 
-const errorInfo = new ErrorInfo({
+const props: TPropsErrorInfo = {
     title: '404',
     message: 'Не туда попали',
-});
+};
 
-render('#app', errorInfo);
+export const PageNotFound = new DefaultPage(ErrorInfo, props);

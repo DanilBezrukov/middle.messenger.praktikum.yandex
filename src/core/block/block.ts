@@ -1,10 +1,11 @@
 import { v4 as makeId } from 'uuid';
 import { EventBus } from '../event-bus/event-bus';
 import { TChildren, IProps, IMeta, IRunningListeners } from './types';
-import { compileHbs, deepEqual } from '../core';
+import { compileHbs } from '../core';
 import { TAttributes } from '../utils/types';
 import { EVENT } from './events';
 import { TCallback } from '../event-bus/types';
+import { deepEqual } from '../../utils/deepEqual';
 export abstract class Block {
     static EVENTS = {
         INIT: 'init',
@@ -58,6 +59,12 @@ export abstract class Block {
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
+
+    public _componentDidShowed() {
+        this.componentDidShowed();
+    }
+
+    public componentDidShowed() {}
 
     public init() {}
 
@@ -122,12 +129,12 @@ export abstract class Block {
 
     protected compile(template = this.tmpl) {
         const propsAndStubs: IProps = { ...this.props };
-
         Object.entries(this.children).forEach(([key, child]) => {
             if (child instanceof Block) {
                 propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
             }
         });
+
         Object.entries(this.lists).forEach(([key, child]) => {
             const idList = this.getIdList(child, key);
             propsAndStubs[key] = `<div data-id="${idList}"></div>`;
@@ -177,7 +184,11 @@ export abstract class Block {
             if (value instanceof Block) {
                 children[key] = value;
             } else if (Array.isArray(value)) {
-                lists[key] = property[key] as TChildren<Block>;
+                if (value[0] instanceof Block) {
+                    lists[key] = property[key] as TChildren<Block>;
+                } else {
+                    props[key] = property[key];
+                }
             } else {
                 props[key] = value;
             }
@@ -197,7 +208,6 @@ export abstract class Block {
         this._setUpdate = false;
         const oldValue = { ...this.props };
         const { children, props } = this._getChildren(nextProps);
-
         if (Object.keys(children).length) {
             Object.assign(this.children, children);
         }
@@ -237,7 +247,9 @@ export abstract class Block {
         }
     }
 
-    protected abstract render(): DocumentFragment;
+    protected render(): DocumentFragment {
+        return this.compile();
+    }
 
     public getContent() {
         return this._element as HTMLElement;
@@ -268,9 +280,9 @@ export abstract class Block {
         return document.createElement(tagName) as T;
     }
 
-    public show() {
+    public show(view: string = 'block') {
         if (this.element) {
-            this.element.style.display = 'block';
+            this.element.style.display = view;
         }
     }
 

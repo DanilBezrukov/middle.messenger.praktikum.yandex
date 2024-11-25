@@ -1,0 +1,12 @@
+<ul>
+    {{#each foundUsers}}
+        <li class="possible-dialogue" data-id="{{this.id}}">
+            <div class="avatar">
+                <img class="img" src="{{this.avatar}}" alt="avatar">
+            </div>
+            <div class="info">
+                <div class="name">{{{this.login}}}</div>
+            </div>
+        </li>
+    {{/each}}
+</ul>

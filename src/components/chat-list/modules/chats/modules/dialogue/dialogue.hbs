@@ -1,0 +1,19 @@
+<ul>
+    {{#each chats}}
+        <li class="chat-item" data-id="{{this.id}}">
+            <div class="avatar">
+                <img class="img" src="{{this.avatar}}" alt="avatar">
+            </div>
+            <div class="chat-info">
+                <div class="chat-name">{{{this.title}}}</div>
+                <div class="chat-preview">{{{this.last_message.content}}}</div>
+            </div>
+            <div class="chat-meta">
+                <div class="chat-time"><span>{{{this.last_message.time}}}</span></div>
+                {{#if this.unread_count}}
+                    <div class="chat-unread-count"><span>{{{this.unread_count}}}</span></div>
+                {{/if}}
+            </div>
+        </li>
+    {{/each}}
+</ul>

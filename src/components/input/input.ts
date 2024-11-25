@@ -4,10 +4,11 @@ interface TPropsInput extends IProps {
     value?: string;
     type: string;
     name: string;
+    placeholder?: string;
 }
 export class Input extends Block {
     constructor(props: TPropsInput) {
-        super(input, props);
+        super(input, { ...props, className: props?.className ?? 'field-input' });
     }
 
     protected render() {

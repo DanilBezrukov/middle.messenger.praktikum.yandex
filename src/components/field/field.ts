@@ -25,7 +25,7 @@ const messages = {
 
 const patterns = {
     first_name: /^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
-    second_name: /^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
+    second_name: /^[A-ZА-ЯЁ]$|^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
     display_name: /^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
     login: /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -45,10 +45,11 @@ export class Field extends Block {
     private currentValue?: Record<string, string>;
 
     constructor(props: TPropsField) {
-        const { type, name } = props;
+        const { type, name, value } = props;
         const input = new Input({
             type,
             name,
+            value,
             events: {
                 [EVENT.Blur]: event => {
                     const regex = patterns[props.name as keyConst];
@@ -77,7 +78,6 @@ export class Field extends Block {
     }
 
     protected render() {
-        // console.log('render');
         return this.compile();
     }
 }

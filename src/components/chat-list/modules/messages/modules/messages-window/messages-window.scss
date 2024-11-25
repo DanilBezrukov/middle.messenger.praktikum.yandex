@@ -1,0 +1,33 @@
+.messages-window {
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+
+  .messages-list {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding: 30px 0;
+    min-height: 100%;
+  }
+
+  .message {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: left;
+    max-width: 380px;
+    padding: 11px;
+    border-radius: 30px;
+
+    &.incoming {
+      background: rgb(248 248 248);
+      align-self: start;
+    }
+
+    &.outgoing {
+      background: rgb(228 237 253);
+      align-self: end;
+    }
+  }
+}

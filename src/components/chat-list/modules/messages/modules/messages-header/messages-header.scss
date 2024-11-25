@@ -1,0 +1,41 @@
+.messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .avatar {
+      .img {
+        width: 34px;
+        height: 34px;
+        min-height: 34px;
+        min-width: 34px;
+        max-width: 34px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: rgb(239 239 239);
+        font-size: 10px;
+      }
+    }
+
+    .user-name {
+      color: rgb(30 30 30);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 13px;
+      text-align: left;
+    }
+  }
+
+  .deleting-chat {
+    cursor: pointer;
+    background: transparent;
+    color: #F00;
+  }
+}

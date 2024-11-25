@@ -1,6 +1,7 @@
 import { IFieldSettings } from '../../components/auth-form/type';
 import { AuthForm } from 'components';
-import { render } from 'core';
+import { DefaultPage } from 'core';
+import { TPropsAuthForm } from '../../components/auth-form/auth-form';
 
 const fieldsSettings: IFieldSettings[] = [
     { type: 'text', placeholder: 'Почта', name: 'email' },
@@ -12,11 +13,12 @@ const fieldsSettings: IFieldSettings[] = [
     { type: 'password', placeholder: 'Пароль (ещё раз)', name: 'password' },
 ];
 
-const authForm = new AuthForm(fieldsSettings, {
+const props: TPropsAuthForm = {
+    type: 'signUp',
     title: 'Регистрация',
     buttonTitle: 'Создать аккаунт',
     linkTitle: 'Войти',
-    linkHref: '/src/pages/authorization/index.html',
-});
+    linkHref: '/',
+};
 
-render('#app', authForm);
+export const PageRegistration = new DefaultPage(AuthForm, props, [fieldsSettings]);
