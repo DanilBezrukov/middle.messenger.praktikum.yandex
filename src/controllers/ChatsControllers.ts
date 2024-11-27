@@ -1,7 +1,6 @@
 import { Store } from 'core';
 import { ChatsAPI } from '../api/ChatsAPI';
-import { IChatList, IUser } from '../api/types';
-import { UserAPI } from '../api/UserAPI';
+import { IChatList, ICurrentChat, IUser } from '../api/types';
 
 const store = new Store();
 
@@ -23,22 +22,24 @@ function avatarReplacement(data: IUser[] | IChatList[] | IUser | IChatList, url:
 }
 
 export class ChatsControllers {
-    private static async createChat(currentUser?: IUser | null, foundUser?: IUser) {
-        if (!foundUser || !currentUser) return;
-        const nameChat = `${currentUser.first_name} / ${foundUser?.first_name}`;
-        const { id } = (await ChatsAPI.createChat(nameChat)) || {};
+    static async createChat(value: string) {
+        const { id } = (await ChatsAPI.createChat(value)) || {};
+        await ChatsControllers.getChats();
         return id;
     }
 
-    static async addChat(id: number | typeof NaN) {
-        const foundUser = store.getState('foundChats')?.users?.find(user => user.id === id);
-        const currentUser = store.getState('user');
-        const chatId = await ChatsControllers.createChat(currentUser, foundUser);
-        if (!chatId) return;
-        const flag = await ChatsAPI.addUserToChat({ user: [currentUser!.id, foundUser!.id], chatId });
-        if (flag) {
-            store.set('foundChats', null);
-        }
+    static async addUserToChat(userId: number | number[]) {
+        const currentChat = store.getState('currentChat');
+        if (!currentChat?.id || !userId) return;
+        await ChatsAPI.addUserToChat({ user: userId, chatId: currentChat?.id });
+        await ChatsControllers.setCurrentChat(currentChat.id);
+    }
+
+    static async deleteUserToChat(userId: number | number[]) {
+        const currentChat = store.getState('currentChat');
+        if (!currentChat?.id || !userId) return;
+        await ChatsAPI.deleteUSerToChat({ user: userId, chatId: currentChat?.id });
+        await ChatsControllers.setCurrentChat(currentChat.id);
     }
 
     static async searchChats(value?: string) {
@@ -47,16 +48,12 @@ export class ChatsControllers {
             store.set('foundChats', null);
             return;
         }
-
-        const requests = [ChatsAPI.getChats({ title: value }), UserAPI.searchUsers(value)];
-        const response = await Promise.all(requests);
-
-        const [chats, users] = response.map(item => item || []);
+        const chats = await ChatsAPI.getChats({ title: value });
+        if (!chats) return;
 
         avatarReplacement(chats, './static/chat.svg');
-        avatarReplacement(users, './static/user.svg');
 
-        store.set('foundChats', { chats, users });
+        store.set('foundChats', { chats });
     }
 
     static async getChats() {
@@ -79,13 +76,11 @@ export class ChatsControllers {
 
         if (!currentChat || !token || !users) return;
 
-        const currentUser = store.getState('user')!;
+        avatarReplacement(users, './static/user.svg');
 
-        const interlocutor = users.find(user => user.id !== currentUser.id)!;
-        avatarReplacement(interlocutor, './static/user.svg');
-        const data = {
+        const data: ICurrentChat = {
             ...currentChat,
-            interlocutor,
+            users,
             token: token.token,
         };
         store.set('currentChat', data);

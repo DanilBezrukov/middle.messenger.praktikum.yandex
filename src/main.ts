@@ -9,19 +9,6 @@ import { PageSettingsPassword } from './pages/user-settings-password/user-settin
 import { PageSettingsPersonalData } from './pages/user-settings-personal-data/user-settings-personal-data';
 import { AuthController } from './controllers/AuthController';
 
-/*
- * DanilB
- * test@practicumyandex.ru
- * 89999999999
- * aJY5BsMhae2eaUE
- * */
-
-/*
- * TestDanilB
- * test@practicumyandex2.ru
- * 89999999999
- * aJY5BsMhae2eaUE
- * */
 const router = new Router();
 
 AuthController.requestUser().then(() => {

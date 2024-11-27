@@ -3,15 +3,14 @@ import { Indexed } from '../../utils/merge';
 import { set } from '../../utils/set';
 import { IChatList, ICurrentChat, IMessage, IUser } from '../../api/types';
 
-export enum StoreEvents {
-    Updated = 'updated',
-}
+export const StoreEvents = {
+    Updated: 'updated',
+} as const;
 
 export type State = {
     user?: IUser | null;
     foundChats?: {
         chats: IChatList[];
-        users: IUser[];
     } | null;
     chats?: IChatList[];
     currentChat?: ICurrentChat;
@@ -55,5 +54,9 @@ export class Store extends EventBus {
                 listener(...args);
             });
         }
+    }
+
+    reset() {
+        this.state = {};
     }
 }

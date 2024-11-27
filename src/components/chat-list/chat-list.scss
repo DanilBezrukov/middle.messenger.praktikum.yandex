@@ -1,7 +1,7 @@
 .chat-list-page {
     display: grid;
     grid-template:
-        'header messages' 102px
+        'header messages' 150px
         'chats messages' minmax(0, 1fr) / 310px minmax(0, 1fr);
     width: 100%;
     height: 100%;
@@ -12,7 +12,6 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: end;
-        height: 100px;
         padding: 21px 10px 14px;
         grid-area: header;
 

@@ -78,18 +78,23 @@ export class Router {
         this.history?.forward();
     }
 
-    private validationUrl(pathname: string) {
-        const userData = store.getState('user');
+    private checkRedirect(pathname: string) {
+        const userData = !!store.getState('user');
         const isAuthUrl = ['/', '/sign-up'].includes(pathname);
-
-        if (userData) {
-            return isAuthUrl ? '/messenger' : pathname;
+        const isRedirect = (userData && isAuthUrl) || (!userData && !isAuthUrl);
+        if (isRedirect) {
+            if (userData) {
+                this.go(isAuthUrl ? '/messenger' : pathname);
+            } else {
+                this.go(isAuthUrl ? pathname : '/');
+            }
         }
-        return isAuthUrl ? pathname : '/';
+        return isRedirect;
     }
 
     private getRoute(pathname: string): Route | undefined {
-        const url = this.validationUrl(pathname);
-        return this.routes[url] || this.routes['/*'];
+        const isRedirect = this.checkRedirect(pathname);
+        if (isRedirect) return;
+        return this.routes[pathname] || this.routes['/*'];
     }
 }

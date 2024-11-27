@@ -27,7 +27,7 @@ export class AuthAPI {
 
     static async getUser(): Promise<IUser | null> {
         try {
-            const { response, status } = await HTTP.get('/user');
+            const { response, status } = await HTTP.get('/user', { timeout: 20000 });
             if (status !== 200) return null;
             return JSON.parse(response);
         } catch (e) {

@@ -1,4 +1,4 @@
-import { Block, IProps, Router } from 'core';
+import { BaseModal, Block, IProps, Router } from 'core';
 import chatList from './chat-list.hbs';
 import './chat-list.scss';
 import { Chats } from './modules/chats/chats';
@@ -34,18 +34,58 @@ const button = new Button({
         [EVENT.Click]: () => router.go('/settings'),
     },
 });
+const modalCreateChat = new BaseModal({
+    className: 'create-chat',
+    title: 'Создать чат',
+    placeholderField: 'Название чата',
+    events: {
+        [EVENT.Submit]: event => {
+            event?.preventDefault();
+            const form = event.target as HTMLFormElement;
+            const formData = new FormData(form);
+            const value = formData.get('field-modal')?.toString().trim();
+            if (!value) return;
+            form.reset();
+            ChatsControllers.createChat(value).then(() => {
+                modalCreateChat.close();
+            });
+        },
+    },
+});
+
+const createChatBtn = new Button({
+    title: 'Создать чат',
+    events: {
+        [EVENT.Click]: () => {
+            modalCreateChat.open();
+        },
+    },
+});
 const emptyCorrespondence = new EmptyCorrespondence();
 
 export class ChatListComponent extends Block {
     constructor(props?: TPropsChatList) {
-        super(chatList, { ...props, messages, emptyCorrespondence, chats, messagesForm, searchChats, button });
+        super(chatList, {
+            ...props,
+            messages,
+            emptyCorrespondence,
+            chats,
+            messagesForm,
+            searchChats,
+            button,
+            createChatBtn,
+            modalCreateChat,
+        });
     }
 
     componentDidShowed() {
         ChatsControllers.getChats().then();
+        /*
+         * Понимаю весь абсурд, но альтернативной возможности обновлять состояние чата в не активном диалоге нет.
+         * */
         setInterval(() => {
             ChatsControllers.getChats().then();
-        }, 3000);
+        }, 10000);
     }
 
     protected componentDidUpdate(oldProps: TPropsChatList, newProps: TPropsChatList) {

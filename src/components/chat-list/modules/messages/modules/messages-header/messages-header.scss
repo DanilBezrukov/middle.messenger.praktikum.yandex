@@ -36,6 +36,47 @@
   .deleting-chat {
     cursor: pointer;
     background: transparent;
-    color: #F00;
+    font-weight: 600;
+    height: 100%;
+  }
+
+  .custom-select {
+    position: relative;
+    height: 100%;
+  }
+
+  .select-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+    z-index: 10;
+  }
+
+  .select-dropdown.active {
+    display: block;
+  }
+
+  .select-option {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &.add {
+      color: var(--blue);
+    }
+    
+    &.delete {
+      color: #F00;
+    }
+  }
+
+  .select-option:hover {
+    background-color: #f0f0f0;
   }
 }
