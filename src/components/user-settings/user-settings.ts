@@ -45,7 +45,7 @@ function getExpandListData(listData: TPropsListItem[], userData: IUser | null, t
     return listData;
 }
 
-class UserSettingsComponent extends Block {
+class UserSettingsComponent extends Block<TPropsUserSettings> {
     constructor(props: TPropsUserSettings, tmplAlias: TmplAlias = 'view') {
         let listItems = props.listItems;
 
@@ -91,15 +91,18 @@ class UserSettingsComponent extends Block {
         });
     }
 
-    protected componentDidUpdate(oldProps: IProps, newProps: TPropsListItem) {
-        const listData = this.props.listData as unknown as TPropsListItem[];
-        const keys = listData.map(item => item.name);
+    protected componentDidUpdate(oldProps: TPropsListItem, newProps: TPropsListItem) {
+        const listData = this.props.listData;
+        if (!listData) return !deepEqual(oldProps, newProps);
+        const keys = listData?.map(item => item?.name);
         const userData = this.props.user as IUser;
         const items = this.lists.listItems as unknown as Block[];
 
         items.forEach((item: Block, index: number) => {
             const key = keys[index] as keyof IUser;
-            item.setProps({ value: userData[key] });
+            if (key) {
+                item.setProps({ value: userData[key] });
+            }
         });
         return !deepEqual(oldProps, newProps);
     }

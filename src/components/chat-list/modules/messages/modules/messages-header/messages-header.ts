@@ -85,7 +85,6 @@ export class MessagesHeader extends Block<TPropsMessagesHeader> {
                 modal.open();
                 break;
             case 'delete-chat':
-                console.log(this.props?.idChat);
                 if (this.props?.idChat) {
                     ChatsControllers.deleteChat(this.props?.idChat).then();
                 }
