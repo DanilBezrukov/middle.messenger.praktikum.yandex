@@ -44,19 +44,19 @@ export class ApiService implements IHTTPTransport {
         return this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
     };
 
-    public put: HTTPMethod = (url, options = { method: METHODS.PUT, timeout: 5000 }) => {
+    public put: HTTPMethod = (url, options = { method: METHODS.PUT, timeout: 10000 }) => {
         return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
     };
 
-    public post: HTTPMethod = (url, options = { method: METHODS.POST, timeout: 5000 }) => {
+    public post: HTTPMethod = (url, options = { method: METHODS.POST, timeout: 10000 }) => {
         return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
     };
 
-    public delete: HTTPMethod = (url, options = { method: METHODS.DELETE, timeout: 5000 }) => {
+    public delete: HTTPMethod = (url, options = { method: METHODS.DELETE, timeout: 10000 }) => {
         return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
     };
 
-    private request = (url: string, options: IOptions, timeout: number = 5000): Promise<XMLHttpRequest> => {
+    private request = (url: string, options: IOptions, timeout: number = 10000): Promise<XMLHttpRequest> => {
         const { method, data = {}, headers = { 'Content-Type': 'application/json' } } = options;
         let dataBeingSend: string | FormData | undefined;
         let readyUrl = '';

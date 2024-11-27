@@ -1,0 +1,29 @@
+.base-modal {
+  border-color: transparent;
+  border-radius: 12px;
+  padding: 40px 30px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
+  width: 340px;
+
+  .title {
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .close {
+    background: #fff;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    margin-top: 15px;
+  }
+}

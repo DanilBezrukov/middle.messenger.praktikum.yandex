@@ -16,7 +16,7 @@ export class AuthController {
     public static async signOut() {
         const flag = await AuthAPI.logout();
         if (flag) {
-            store.set('user', null);
+            store.reset();
             router.go('/');
         }
     }

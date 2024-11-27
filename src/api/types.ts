@@ -58,7 +58,7 @@ export interface IChatList extends IChat {
 
 export interface ICurrentChat extends IChatList {
     token: string;
-    interlocutor: IUser;
+    users: IUser[];
 }
 
 export interface IOptionsForGettingChat {

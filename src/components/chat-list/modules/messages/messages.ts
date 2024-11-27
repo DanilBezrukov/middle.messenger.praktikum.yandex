@@ -34,10 +34,12 @@ export class Messages extends Block {
         if (newProps.messages) {
             messagesWindow.setProps({ messages: newProps.messages });
         }
-        if (newProps.currentChat?.interlocutor) {
+        if (newProps.currentChat) {
             messagesHeader.setProps({
-                interlocutor: newProps.currentChat?.interlocutor,
+                title: newProps.currentChat?.title,
+                usersCount: newProps.currentChat?.users.length || 0,
                 idChat: newProps.currentChat.id,
+                avatar: newProps.currentChat.avatar,
             });
         }
 

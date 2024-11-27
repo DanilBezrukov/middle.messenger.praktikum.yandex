@@ -6,19 +6,20 @@ import { TAttributes } from '../utils/types';
 import { EVENT } from './events';
 import { TCallback } from '../event-bus/types';
 import { deepEqual } from '../../utils/deepEqual';
-export abstract class Block {
+
+export abstract class Block<P extends IProps = IProps> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_RENDER: 'flow:render',
         FLOW_CDU: 'flow:component-did-update',
-    };
+    } as const;
 
     private _element: HTMLElement | undefined;
     protected _id: string;
     protected _meta: IMeta;
     private _runningListeners: IRunningListeners[] = [];
-    protected props: IProps;
+    protected props: P;
     protected children: TChildren<unknown>;
     protected lists: Record<string, TChildren<unknown>>;
     protected eventBus: () => EventBus;

@@ -1,11 +1,12 @@
 import { EventBus } from 'core';
 
-export enum WSEvents {
-    Connected = 'connected',
-    Close = 'close',
-    Message = 'message',
-    Error = 'error',
-}
+export const WSEvents = {
+    Connected: 'connected',
+    Close: 'close',
+    Message: 'message',
+    Error: 'error',
+} as const;
+
 export class WSService extends EventBus {
     private socket?: WebSocket;
     private pingInterval?: ReturnType<typeof setInterval>;

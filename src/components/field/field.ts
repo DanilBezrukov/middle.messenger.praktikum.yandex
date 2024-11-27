@@ -3,12 +3,15 @@ import field from './field.hbs';
 import './field.scss';
 import { EVENT } from '../../core/block/events';
 import { Input } from '../input/input';
+
 export interface TPropsField extends IProps {
-    value?: string;
     type: string;
     name: string;
+    value?: string;
     placeholder?: string;
     errorStatus?: 'active' | 'inactive';
+    messagesError?: string;
+    validation?: boolean;
 }
 
 const messages = {
@@ -45,15 +48,17 @@ export class Field extends Block {
     private currentValue?: Record<string, string>;
 
     constructor(props: TPropsField) {
-        const { type, name, value } = props;
+        const { type, name, value, messagesError, validation = true } = props;
         const input = new Input({
             type,
             name,
             value,
             events: {
                 [EVENT.Blur]: event => {
+                    if (!validation) return;
                     const regex = patterns[props.name as keyConst];
-                    const value = (event.currentTarget as HTMLInputElement).value;
+                    const value = (event.currentTarget as HTMLInputElement)?.value;
+                    if (!regex || !value) return;
                     const isValid = regex.test(value);
                     this.currentValue = { [props.name]: value };
 
@@ -61,7 +66,7 @@ export class Field extends Block {
                 },
             },
         });
-        super(field, { ...props, input, message: getMessage(props.name as keyConst) });
+        super(field, { ...props, input, messagesError: messagesError ?? getMessage(props.name as keyConst) });
     }
 
     get value() {

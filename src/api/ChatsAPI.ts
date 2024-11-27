@@ -51,6 +51,20 @@ export class ChatsAPI {
         }
     }
 
+    static async deleteUSerToChat(value: { user: number[] | number; chatId: number }): Promise<boolean> {
+        let { user, chatId } = value;
+        if (!Array.isArray(user)) {
+            user = [+user];
+        }
+        try {
+            const { status } = await HTTP.delete('/users', { data: { users: user, chatId } });
+            return status === 200;
+        } catch (e) {
+            console.error(e);
+            return false;
+        }
+    }
+
     static async getToken(chatId: number): Promise<{ token: string } | null> {
         try {
             const { response, status } = await HTTP.post('/token/' + chatId);

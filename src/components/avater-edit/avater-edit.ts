@@ -46,7 +46,9 @@ class AvatarEditComponent extends Block {
 }
 
 function mapStateToProps(state: Indexed | null): Indexed {
-    return { url: 'https://ya-praktikum.tech/api/v2/resources' + (state?.user as IUser)?.avatar } as Indexed;
+    const userAvatar = (state?.user as IUser)?.avatar;
+    const url = userAvatar ? 'https://ya-praktikum.tech/api/v2/resources' + userAvatar : './static/empty-photo.svg';
+    return { url } as Indexed;
 }
 
 const AvatarEdit = connect<TPropsAvatarEdit>(mapStateToProps)(AvatarEditComponent);
