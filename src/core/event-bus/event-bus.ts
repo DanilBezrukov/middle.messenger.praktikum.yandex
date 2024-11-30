@@ -6,9 +6,9 @@ export class EventBus {
         this.listeners = {};
     }
 
-    on(event: string, callback: TCallback) {
+    on<T = unknown>(event: string, callback: TCallback<T>) {
         this.listeners[event] ??= [];
-        this.listeners[event].push(callback);
+        this.listeners[event].push(callback as TCallback<unknown>);
     }
 
     off(event: string, callback: TCallback) {

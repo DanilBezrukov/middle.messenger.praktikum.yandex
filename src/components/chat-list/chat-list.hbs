@@ -1,33 +1,11 @@
 <div class="chat-list-page">
     <div class="chat-header">
-        <div class="profile-btn">Профиль ></div>
-        <form class="header-search-wrapper">
-            <label>
-                <input type="text" class="header-search" placeholder="Поиск" name="header-search">
-            </label>
-        </form>
+        {{{button}}}
+        {{{searchChats}}}
+        {{{createChatBtn}}}
     </div>
-
     {{{chats}}}
-
-    <div class="messages">
-        <div class="messages-header">
-            <div class="user">
-                <div class="user-avatar"></div>
-                <div class="user-name">Вадим</div>
-            </div>
-            <div class="setting-btn">
-                <span class="setting-point"></span>
-                <span class="setting-point"></span>
-                <span class="setting-point"></span>
-            </div>
-        </div>
-        <div class="messages-window">
-            <p class="message incoming">Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-            <p class="message outgoing">Круто</p>
-        </div>
-        {{{messagesForm}}}
-
-    </div>
+    {{{messages}}}
+    {{{emptyCorrespondence}}}
+    {{{modalCreateChat}}}
 </div>

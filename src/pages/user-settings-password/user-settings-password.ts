@@ -1,11 +1,11 @@
 import { UserSettings, Button, Field } from 'components';
-import { render } from 'core';
+import { DefaultPage } from 'core';
 import { getComponentsList } from '../../utils/getComponentsList';
+import { TPropsUserSettings } from '../../components/user-settings/user-settings';
 
 const privateData = [
     { type: 'password', placeholder: 'Старый пароль', name: 'oldPassword', value: '' },
-    { type: 'password', placeholder: 'Новый пароль', name: 'password', value: '' },
-    { type: 'password', placeholder: 'Повторите новый пароль', name: 'newPassword', value: '' },
+    { type: 'password', placeholder: 'Новый пароль', name: 'newPassword', value: '' },
 ];
 
 const listItems = getComponentsList(Field, privateData);
@@ -15,6 +15,6 @@ const button = new Button({
     title: 'Сохранить',
 });
 
-const userSettings = new UserSettings('edit', { listItems, button });
+const props: TPropsUserSettings = { type: 'editPassword', listItems, button };
 
-render('#app', userSettings);
+export const PageSettingsPassword = new DefaultPage(UserSettings, props, ['edit']);

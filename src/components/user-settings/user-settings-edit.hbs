@@ -1,18 +1,17 @@
 <main class='user-settings-page'>
     {{{goBack}}}
-    <form class='wrapper'>
+    <div class='wrapper'>
         <div class='header'>
-            <label class='upload-photo upload-photo-disabled'>
-                <input disabled type='file' accept='image/*' />
-            </label>
+            {{{avatarEdit}}}
         </div>
+        <form class="form-wrapper">
+            <div class='list'>
+                {{{listItems}}}
+            </div>
 
-        <div class='list'>
-            {{{listItems}}}
-        </div>
-
-        <div class='btn-wrapper'>
-            {{{button}}}
-        </div>
-    </form>
+            <div class='btn-wrapper'>
+                {{{button}}}
+            </div>
+        </form>
+    </div>
 </main>

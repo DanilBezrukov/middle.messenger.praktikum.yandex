@@ -8,6 +8,7 @@
         "stylelint": "stylelint 'src/**/*.{css,scss,sass}'",
         "check": "tsc --noEmit && stylelint \"**/*.scss\" && eslint . --ext .ts",
         "dev": "npm run check && vite",
+        "dev:clean": "vite",
         "start": "npm run check && tsc && vite build && vite preview --port 3000",
         "build": "tsc && vite build"
     },

@@ -5,10 +5,11 @@ interface TPropsButton extends IProps {
     type?: string;
     title?: string;
     dataAttributes?: string;
+    className?: string;
 }
 export class Button extends Block {
     constructor(props?: TPropsButton) {
-        super(button, props);
+        super(button, { ...props, className: props?.className ?? 'default-btn' });
     }
 
     protected render() {

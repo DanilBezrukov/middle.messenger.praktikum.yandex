@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
@@ -12,37 +12,10 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="./src/assets/style.scss" />
-        <title>Navigation</title>
-        <style>
-            #navigation-for-development {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-
-                ul {
-                    display: grid;
-                    gap: 10px;
-                    margin-top: 20px;
-                }
-            }
-        </style>
+        <title>Messenger</title>
     </head>
     <body>
-        <div id="navigation-for-development">
-            <main>
-                <h1>Новигация для разработки</h1>
-                <nav>
-                    <ul>
-                        <a href="/src/pages/authorization/index.html">Авторизация</a>
-                        <a href="/src/pages/registration/index.html">Регистрация</a>
-                        <a href="/src/pages/chat-list/index.html">Список чатов и лента переписки</a>
-                        <a href="/src/pages/user-settings/index.html">Страница настроек профиля</a>
-                        <a href="/src/pages/not-found/index.html">Страница 404</a>
-                        <a href="/src/pages/server-error/index.html">Страница 5**</a>
-                    </ul>
-                </nav>
-            </main>
-        </div>
+    <div id="app"></div>
+    <script src="./src/main.ts" type="module"></script>
     </body>
 </html>

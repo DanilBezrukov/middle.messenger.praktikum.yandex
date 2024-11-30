@@ -17,6 +17,6 @@ export function getValidForm(form: HTMLFormElement, fields: TChildren<unknown>):
     formData.forEach((value, key) => {
         formObject[key] = value;
     });
-    form.reset();
+    // form.reset();
     return formObject;
 }

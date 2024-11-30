@@ -1,0 +1,7 @@
+.messages {
+  grid-area: messages;
+  background: #fff;
+  display: grid;
+  grid-template-rows: 54px minmax(0, 1fr) minmax(54px, auto);
+  padding: 0 20px;
+}

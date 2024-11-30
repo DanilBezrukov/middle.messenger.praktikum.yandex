@@ -1,14 +1,12 @@
 <main class='user-settings-page'>
     {{{goBack}}}
     <div class='wrapper'>
-        <form class='header'>
-            <label class='upload-photo'>
-                <input type='file' accept='image/*' />
-            </label>
+        <div class='header'>
+            {{{avatarEdit}}}
             <span class='header-name'>
-                Иван
+                {{user.first_name}} ( ID: {{user.id}} )
             </span>
-        </form>
+        </div>
 
         <ul class='list'>
             {{{listItems}}}

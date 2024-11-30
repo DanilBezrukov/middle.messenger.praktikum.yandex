@@ -3,12 +3,15 @@ import field from './field.hbs';
 import './field.scss';
 import { EVENT } from '../../core/block/events';
 import { Input } from '../input/input';
+
 export interface TPropsField extends IProps {
-    value?: string;
     type: string;
     name: string;
+    value?: string;
     placeholder?: string;
     errorStatus?: 'active' | 'inactive';
+    messagesError?: string;
+    validation?: boolean;
 }
 
 const messages = {
@@ -25,7 +28,7 @@ const messages = {
 
 const patterns = {
     first_name: /^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
-    second_name: /^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
+    second_name: /^[A-ZА-ЯЁ]$|^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
     display_name: /^[A-ZА-ЯЁ][a-zA-Zа-яё-]{1,49}$/,
     login: /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -45,14 +48,17 @@ export class Field extends Block {
     private currentValue?: Record<string, string>;
 
     constructor(props: TPropsField) {
-        const { type, name } = props;
+        const { type, name, value, messagesError, validation = true } = props;
         const input = new Input({
             type,
             name,
+            value,
             events: {
                 [EVENT.Blur]: event => {
+                    if (!validation) return;
                     const regex = patterns[props.name as keyConst];
-                    const value = (event.currentTarget as HTMLInputElement).value;
+                    const value = (event.currentTarget as HTMLInputElement)?.value;
+                    if (!regex || !value) return;
                     const isValid = regex.test(value);
                     this.currentValue = { [props.name]: value };
 
@@ -60,7 +66,7 @@ export class Field extends Block {
                 },
             },
         });
-        super(field, { ...props, input, message: getMessage(props.name as keyConst) });
+        super(field, { ...props, input, messagesError: messagesError ?? getMessage(props.name as keyConst) });
     }
 
     get value() {
@@ -77,7 +83,6 @@ export class Field extends Block {
     }
 
     protected render() {
-        // console.log('render');
         return this.compile();
     }
 }
