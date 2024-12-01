@@ -1,8 +1,8 @@
-import { Block } from '../block/block';
+import { Block } from '../../core/block/block';
 import baseModalHbs from './base-modal.hbs';
 import './base-modal.scss';
 import { Button, Field } from 'components';
-import { IProps } from '../block/types';
+import { IProps } from '../../core/block/types';
 
 export interface TPropsModalCreateChat extends IProps {
     idChat?: number;
