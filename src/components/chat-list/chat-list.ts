@@ -1,4 +1,4 @@
-import { BaseModal, Block, IProps, Router } from 'core';
+import { Block, IProps, Router } from 'core';
 import chatList from './chat-list.hbs';
 import './chat-list.scss';
 import { Chats } from './modules/chats/chats';
@@ -13,6 +13,7 @@ import { EmptyCorrespondence } from './modules/empty-correspondence/empty-corres
 import { Button } from 'components';
 import { EVENT } from '../../core/block/events';
 import { ChatsControllers } from '../../controllers/ChatsControllers';
+import { BaseModal } from '../base-modal/base-modal';
 
 interface TPropsChatList extends IProps {
     currentChat?: State['currentChat'];
