@@ -7,5 +7,4 @@ export { Router } from './router/Router';
 export { DefaultPage } from './default-page/default-page';
 export { ApiService } from './utils/ApiService';
 export { Store } from './store/Store';
-export { BaseModal } from './base-modal/base-modal';
 export type { IProps } from './block/types';

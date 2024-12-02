@@ -1,10 +1,10 @@
-import { BaseModal, Block, IProps } from 'core';
+import { Block, IProps } from 'core';
 import messagesHeaderHbs from './messages-header.hbs';
 import './messages-header.scss';
 import { Button } from 'components';
 import { EVENT } from '../../../../../../core/block/events';
 import { ChatsControllers } from '../../../../../../controllers/ChatsControllers';
-import { TPropsModalCreateChat } from '../../../../../../core/base-modal/base-modal';
+import { BaseModal, TPropsModalCreateChat } from '../../../../../base-modal/base-modal';
 
 interface TPropsMessagesHeader extends IProps {
     idChat?: number;

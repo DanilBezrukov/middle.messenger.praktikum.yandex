@@ -23,5 +23,5 @@
             "components": ["src/components/components"]
         }
     },
-    "include": ["src", "node_modules/handlebars/types/index.d.ts"]
+    "include": ["src", "node_modules/handlebars/types/index.d.ts", "test/**/*"]
 }
